@@ -18,6 +18,9 @@ export const useFetch = (URL) => {
       crossorigin: true,
       mode: "cors",
       signal: abortController.signal,
+      headers: {
+        response_type: "frNuvSOQS6DwED97bYHrJeHmyGGCnJleDYxZDQiIDVSnIM7CeqL",
+      },
     })
       .then((response) => {
         // console.log(response.json());
