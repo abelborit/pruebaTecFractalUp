@@ -78,7 +78,7 @@ export const AlbumPage = () => {
             <FooterControlSong track={fetchDataTracks.tracks} />
           )}
 
-          <SongPlayer accessToken={accessToken} trackUri={playingTrack} />
+          {/* <SongPlayer accessToken={accessToken} trackUri={playingTrack} /> */}
         </>
       )}
     </>

@@ -66,7 +66,7 @@ export const MusicPage = () => {
           />
         ))}
 
-      <SongPlayer accessToken={accessToken} trackUri={playingTrack} />
+      {/* <SongPlayer accessToken={accessToken} trackUri={playingTrack} /> */}
     </>
   );
 };
