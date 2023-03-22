@@ -5,7 +5,7 @@ export const AlbumSection = ({ albumElement }) => {
   // console.log(albumElement);
 
   return (
-    <div>
+    <div className="albumCard">
       <Link to={`/album/${albumElement.id}/${albumElement.name}`}>
         <figure>
           <img
@@ -13,12 +13,12 @@ export const AlbumSection = ({ albumElement }) => {
             alt={albumElement.name}
             title={albumElement.name}
           />
-          <figcaption>{albumElement.name}</figcaption>
+          <figcaption>Álbum: {albumElement.name}</figcaption>
         </figure>
       </Link>
 
       {albumElement.artists.map((artist) => (
-        <p>{artist.name}</p>
+        <p>Artista: {artist.name}</p>
       ))}
     </div>
   );

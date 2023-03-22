@@ -1,14 +1,17 @@
 import React from "react";
 
-export const SongOfAlbum = ({ track, setSongSelectName, setPlayingTrack }) => {
+export const SongOfAlbum = ({
+  track,
+  setSongSelectName,
+  setPlayingTrack,
+  setPreviewUrlTrack,
+}) => {
   // console.log(track);
 
   const handleSongSelect = (e) => {
-    // console.log(e.target.innerHTML);
-    // console.log(e.target.getAttribute("uri"));
-
     setSongSelectName(e.target.innerHTML);
     setPlayingTrack(e.target.getAttribute("uri"));
+    setPreviewUrlTrack(e.target.getAttribute("previewUrl"));
   };
 
   const milisecondsTrack = track.duration_ms;
@@ -19,15 +22,21 @@ export const SongOfAlbum = ({ track, setSongSelectName, setPlayingTrack }) => {
     miliseconds -= minutes * 60 * 1000;
     const seconds = parseInt(miliseconds / 1000);
 
-    return (durationConvert = `${minutes}:${seconds}`);
+    return (durationConvert = `${minutes}:${
+      seconds < 9 ? `0${seconds}` : seconds
+    }`);
   };
 
   milisecondsToMinutesAndSeconds(milisecondsTrack);
   // console.log(durationConvert);
 
   return (
-    <li>
-      <span onClick={handleSongSelect} uri={track.uri}>
+    <li className="listTracks">
+      <span
+        onClick={handleSongSelect}
+        uri={track.uri}
+        previewUrl={track.preview_url}
+      >
         {track.name}
       </span>
       <span>{durationConvert}</span>

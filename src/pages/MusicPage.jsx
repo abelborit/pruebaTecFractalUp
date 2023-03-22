@@ -7,7 +7,7 @@ import { TracksSection } from "../components/TracksSection";
 import { SongPlayer } from "../components/SongPlayer";
 
 const initalState =
-  JSON.parse(window.localStorage.getItem("searchParam")) || "sixdo";
+  JSON.parse(window.localStorage.getItem("searchParam")) || "adele";
 
 export const MusicPage = () => {
   const [searchParam, setSearchParam] = useState(initalState);
@@ -37,36 +37,43 @@ export const MusicPage = () => {
   // console.log(fetchDataTracks, "fetchDataTracks");
 
   const accessToken =
-    "BQCXXY_rWwA3Ww-rbalqjkizhif09wS2uJPe_8eHulonvnKfEtIzCJ5qsivVzoCRcNxAg5n0n43diZLss2rQ1GraDhAt0-lxg1wGXmDIH7H9_yry9HSk";
-  return (
-    <>
-      <div>MusicPage</div>
+    "BQB_Ilcxc55uo-ntWEbD2MwWNSQK0nunb7Dw90cluKhPeuSWysiAgfycGjUBkB6NvJe0N_iAIgfVLiOgJBi5_kBldUh66VWZeZGl5yAnERTogHYe8EDv";
 
+  return (
+    <main className="main">
       <FormSearch handleSearchParam={handleSearchParam} />
 
       {fetchLoadingAlbum && <Loader />}
       {fetchLoadingTracks && <Loader />}
 
-      <h3>Álbumes</h3>
-      {!fetchLoadingAlbum &&
-        fetchDataAlbum.albums.items.map((albumElement) => (
-          <AlbumSection key={albumElement.id} albumElement={albumElement} />
-        ))}
+      <div>
+        <h3>Álbumes</h3>
+        <section className="sectionAlbums">
+          {!fetchLoadingAlbum &&
+            fetchDataAlbum.albums.items.map((albumElement) => (
+              <AlbumSection key={albumElement.id} albumElement={albumElement} />
+            ))}
+        </section>
+      </div>
 
       <hr />
 
-      <h3>Canciones</h3>
-      {!fetchLoadingTracks &&
-        fetchDataTracks.tracks.items.map((trackElement) => (
-          <TracksSection
-            key={trackElement.id}
-            trackElement={trackElement}
-            setSongSelectName={setSongSelectName}
-            setPlayingTrack={setPlayingTrack}
-          />
-        ))}
+      <div>
+        <h3>Canciones</h3>
+        <section className="sectionTracks">
+          {!fetchLoadingTracks &&
+            fetchDataTracks.tracks.items.map((trackElement) => (
+              <TracksSection
+                key={trackElement.id}
+                trackElement={trackElement}
+                setSongSelectName={setSongSelectName}
+                setPlayingTrack={setPlayingTrack}
+              />
+            ))}
+        </section>
+      </div>
 
-      {/* <SongPlayer accessToken={accessToken} trackUri={playingTrack} /> */}
-    </>
+      <SongPlayer accessToken={accessToken} trackUri={playingTrack} />
+    </main>
   );
 };

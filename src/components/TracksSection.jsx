@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { SongPlayer } from "./SongPlayer";
+import React from "react";
 
 export const TracksSection = ({
   trackElement,
@@ -17,15 +16,17 @@ export const TracksSection = ({
   };
 
   return (
-    <div>
-      <h2 onClick={handleSongSelect} uri={trackElement.uri}>
-        {trackElement.name}
-      </h2>
-      <span>{trackElement.album.name}</span>
+    <div className="trackCard">
+      <div>
+        <h3 onClick={handleSongSelect} uri={trackElement.uri}>
+          {trackElement.name}
+        </h3>
+        <span>Álbum: {trackElement.album.name}</span>
 
-      {trackElement.artists.map((artist) => (
-        <p>{artist.name}</p>
-      ))}
+        {trackElement.artists.map((artist) => (
+          <p>Artista: {artist.name}</p>
+        ))}
+      </div>
 
       <audio controls>
         <source src={trackElement.preview_url} type="audio/mpeg" />

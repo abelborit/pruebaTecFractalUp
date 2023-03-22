@@ -8,6 +8,7 @@ import { useFetch } from "../hooks/useFetch";
 
 export const AlbumPage = () => {
   const [songSelectName, setSongSelectName] = useState();
+  const [previewUrlTrack, setPreviewUrlTrack] = useState();
   const [playingTrack, setPlayingTrack] = useState();
 
   const navigate = useNavigate();
@@ -33,18 +34,16 @@ export const AlbumPage = () => {
   // console.log(fetchDataTracks);
 
   const accessToken =
-    "BQCXXY_rWwA3Ww-rbalqjkizhif09wS2uJPe_8eHulonvnKfEtIzCJ5qsivVzoCRcNxAg5n0n43diZLss2rQ1GraDhAt0-lxg1wGXmDIH7H9_yry9HSk";
+    "BQB_Ilcxc55uo-ntWEbD2MwWNSQK0nunb7Dw90cluKhPeuSWysiAgfycGjUBkB6NvJe0N_iAIgfVLiOgJBi5_kBldUh66VWZeZGl5yAnERTogHYe8EDv";
 
   return (
-    <>
-      <button onClick={() => navigate("/")}>
-        Volver a la página principal
-      </button>
+    <section className="albumPage">
+      <button onClick={() => navigate("/")}>Regresar</button>
 
       {fetchLoadingAlbum && <Loader />}
 
       {!fetchLoadingAlbum && (
-        <>
+        <div className="albumContent">
           <div>
             <figure>
               <img
@@ -52,15 +51,18 @@ export const AlbumPage = () => {
                 alt={fetchDataAlbum.name}
                 title={fetchDataAlbum.name}
               />
-              <figcaption>{fetchDataAlbum.name}</figcaption>
-            </figure>
 
-            {fetchDataAlbum.artists.map((artist) => (
-              <p>{artist.name}</p>
-            ))}
+              <div>
+                <figcaption>{fetchDataAlbum.name}</figcaption>
+
+                {fetchDataAlbum.artists.map((artist) => (
+                  <p>{artist.name}</p>
+                ))}
+              </div>
+            </figure>
           </div>
 
-          <div>
+          <div className="tracksContainer">
             <ul>
               {fetchDataAlbum.tracks.items.map((track) => (
                 <SongOfAlbum
@@ -68,6 +70,7 @@ export const AlbumPage = () => {
                   track={track}
                   setSongSelectName={setSongSelectName}
                   setPlayingTrack={setPlayingTrack}
+                  setPreviewUrlTrack={setPreviewUrlTrack}
                 />
               ))}
             </ul>
@@ -75,12 +78,15 @@ export const AlbumPage = () => {
 
           {fetchLoadingTracks && <Loader />}
           {!fetchLoadingTracks && (
-            <FooterControlSong track={fetchDataTracks.tracks} />
+            <FooterControlSong
+              track={fetchDataTracks.tracks}
+              previewUrl={previewUrlTrack}
+            />
           )}
 
-          {/* <SongPlayer accessToken={accessToken} trackUri={playingTrack} /> */}
-        </>
+          <SongPlayer accessToken={accessToken} trackUri={playingTrack} />
+        </div>
       )}
-    </>
+    </section>
   );
 };

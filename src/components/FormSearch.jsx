@@ -19,7 +19,7 @@ export const FormSearch = ({ handleSearchParam }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="formSearch" onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="Buscar"
