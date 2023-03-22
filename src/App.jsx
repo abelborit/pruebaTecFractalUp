@@ -1,14 +1,23 @@
 import React from "react";
+import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
 import { AsideInfo } from "./components/AsideInfo";
-import { FooterControlSong } from "./components/FooterControlSong";
-import { MusicPage } from "./components/MusicPage";
+import { AlbumPage } from "./pages/AlbumPage";
+import { Error404 } from "./pages/Error404";
+import { MusicPage } from "./pages/MusicPage";
 
 export const App = () => {
   return (
     <>
-      <AsideInfo />
-      <MusicPage />
-      <FooterControlSong />
+      <BrowserRouter>
+        <AsideInfo />
+
+        <Routes>
+          <Route path="/" element={<MusicPage />} />
+          <Route path="/album/:id/:name" element={<AlbumPage />} />
+
+          <Route path="/*" element={<Error404 />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 };

@@ -1,19 +1,25 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const AlbumSection = ({ albumElement }) => {
   // console.log(albumElement);
+
   return (
     <div>
-      <figure>
-        <img
-          src={albumElement.cover_medium}
-          alt={albumElement.title}
-          title={albumElement.title}
-        />
-        <figcaption>{albumElement.title}</figcaption>
-      </figure>
+      <Link to={`/album/${albumElement.id}/${albumElement.name}`}>
+        <figure>
+          <img
+            src={albumElement.images[1].url}
+            alt={albumElement.name}
+            title={albumElement.name}
+          />
+          <figcaption>{albumElement.name}</figcaption>
+        </figure>
+      </Link>
 
-      <span>{albumElement.artist.name}</span>
+      {albumElement.artists.map((artist) => (
+        <p>{artist.name}</p>
+      ))}
     </div>
   );
 };

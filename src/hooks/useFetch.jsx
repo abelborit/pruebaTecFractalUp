@@ -13,13 +13,11 @@ export const useFetch = (URL) => {
     setLoading(true);
 
     fetch(URL, {
-      method: "GET",
-      withCredentials: true,
-      crossorigin: true,
-      mode: "cors",
       signal: abortController.signal,
       headers: {
-        response_type: "frNuvSOQS6DwED97bYHrJeHmyGGCnJleDYxZDQiIDVSnIM7CeqL",
+        Accept: "application/json",
+        Authorization:
+          "Bearer BQCXXY_rWwA3Ww-rbalqjkizhif09wS2uJPe_8eHulonvnKfEtIzCJ5qsivVzoCRcNxAg5n0n43diZLss2rQ1GraDhAt0-lxg1wGXmDIH7H9_yry9HSk",
       },
     })
       .then((response) => {
