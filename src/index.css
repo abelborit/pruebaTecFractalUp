@@ -239,12 +239,22 @@ hr {
 }
 
 .albumPage .albumContent figcaption {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   width: 100%;
   font-size: 1.2rem;
   font-weight: bold;
   color: #333;
   text-align: left;
   text-transform: capitalize;
+}
+
+.albumPage .albumContent figcaption svg {
+  width: 35px;
+  height: 35px;
+  margin-left: 0.5rem;
+  fill: #662323;
 }
 
 .albumPage .albumContent p {
@@ -337,6 +347,47 @@ audio::-webkit-media-controls-panel {
   background-color: #662323;
 }
 
+.firstTrackContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.sectionFirstTrack > .firstTrackContainer {
+  background-color: rgba(100, 100, 100, 0.1);
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+
+.sectionFirstTrack .trackCardPhoto figure img {
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+}
+
+.firstTrackContainer > .trackCard {
+  background-color: rgba(100, 100, 100, 0);
+}
+
+.formSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.formSection .user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #662323;
+}
+
+.formSection .user svg {
+  width: 18px;
+  height: 18px;
+  margin-right: 0.5rem;
+  fill: #662323;
+}
+
 @media screen and (min-width: 768px) {
   .aside img {
     align-self: center;
@@ -407,6 +458,22 @@ audio::-webkit-media-controls-panel {
   .controlSongContainer {
     width: 50%;
     margin: auto;
+  }
+
+  .firstTrackContainer {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .formSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .formSection .user {
+    order: 2;
   }
 }
 

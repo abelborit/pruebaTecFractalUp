@@ -17,7 +17,7 @@ export const useFetch = (URL) => {
       headers: {
         Accept: "application/json",
         Authorization:
-          "Bearer BQDwNX9JBSjWT5tNqvuRSDtksYNT_KavAc231U0bcvOl_QCQcIBgHplicVTF_IYE7mOtSqm7i1rAQzihzRggqiKBb7X72w0P3TCWguM4EfWcrJaBp2UA",
+          "Bearer BQDe2zR5omHgAD-JH2xH69YX1UBlo24IpOFAlF4G0s5ekYDjldw5USqPT3fNjY6649b2hUrdynIkZzfb8w-YkbGA9ZYd8PEO7hRcJerR0YdwoX1N_KXD",
       },
     })
       .then((response) => {

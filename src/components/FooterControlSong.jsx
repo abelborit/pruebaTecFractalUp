@@ -1,7 +1,8 @@
 import React from "react";
 
 export const FooterControlSong = ({ track, previewUrl }) => {
-  console.log(previewUrl);
+  // console.log(previewUrl);
+
   return (
     <section className="controlSongContainer">
       <figure className="figureSongContainer">

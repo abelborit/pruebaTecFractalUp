@@ -5,6 +5,7 @@ import { FormSearch } from "../components/FormSearch";
 import { Loader } from "../components/Loader";
 import { TracksSection } from "../components/TracksSection";
 import { SongPlayer } from "../components/SongPlayer";
+import { FirstTrackSection } from "../components/FirstTrackSection";
 
 const initalState =
   JSON.parse(window.localStorage.getItem("searchParam")) || "adele";
@@ -45,6 +46,17 @@ export const MusicPage = () => {
 
       {fetchLoadingAlbum && <Loader />}
       {fetchLoadingTracks && <Loader />}
+
+      <section className="sectionFirstTrack">
+        {!fetchLoadingTracks && (
+          <FirstTrackSection
+            key={fetchDataTracks.tracks.items[0].id}
+            trackElement={fetchDataTracks.tracks.items[0]}
+          />
+        )}
+      </section>
+
+      <hr />
 
       <div>
         <h3>Álbumes</h3>
