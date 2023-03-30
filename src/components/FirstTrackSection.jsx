@@ -5,7 +5,7 @@ export const FirstTrackSection = ({
   setSongSelectName,
   setPlayingTrack,
 }) => {
-  console.log(trackElement);
+  // console.log(trackElement);
 
   const handleSongSelect = (e) => {
     // console.log(e.target.innerHTML);
